@@ -1,0 +1,217 @@
+// Sử dụng các hàm được viết sắn trong file -> Config/function.inf
+include=Config/function.inf
+
+function Clicks (x,y)
+{
+	LeftClick=x,y,2,50
+	Sleep=500
+	return 1;
+}
+
+function ClickMuiTen (xx,yy)
+{
+//	MsgBox="Nhan duoc "+xx+" , "+yy;
+	yy+=45;
+	Clicks (xx,yy);
+	
+//	MsgBox="Nhan duoc "+xx+" , "+yy;
+	
+	yy+=10;
+//	Clicks (xx,yy);
+	yy+=10;
+//	Clicks (xx,yy);
+	return 1;
+}
+
+function AAAA ()
+{
+	
+	
+	ClickMouse (312,558);
+		wait (2000);
+		ClickMouse (25,25);
+	wait (2000);
+	
+		ClickMouse (185,590);
+	wait (2000);
+	
+	
+	
+	CheckImage ("/Tank/NangCap_245_529.bmp",245,529,90,15,15,15,1); // XAY DUNG chi so sanh hinh mau trang
+	if (Call>0) 
+	{
+		ClickMouse (245,529);
+		wait (1000);
+	}
+	
+	
+		//chien dau
+	
+	
+	Clicks (145,345);	//giua man hinh
+		Clicks (90,604);				
+		Clicks (245,604);		
+		Clicks (145,600);		
+		Clicks (245,604);				
+		Clicks (196,604);				
+		Clicks (245,604);		
+	
+}
+
+
+function Main ()
+{
+// Bat Dau Viet Code Script tu day xuong duoi
+	
+	CheckImage ("/TankSS20/NoiChuyen_226_621.bmp",226,621); // Noi chuyen
+	if (Call>0) 
+	{	
+	//MsgBox="1111"
+		Clicks (268,620);				
+		//return 1;
+	}
+	
+	CheckImage ("/TankSS20/XacNhan_122_528.bmp",122,528); // Noi chuyen
+	if (Call>0) 
+	{	
+	//MsgBox="2222"
+		Clicks (122,528);				
+		//return 1;
+	}
+	
+	CheckImage ("/TankSS20/XacNhan2_121_438.bmp",121,438); // Noi chuyen
+	if (Call>0) 
+	{		
+		Clicks (122,438);				
+		//return 1;
+	}
+	
+	
+	
+	
+	FindImage ("/TankSS20/tenBan.bmp",45,540,230,80,95,5,5,5,2); // mui tenmau vang xay dung muitenxd_173_232
+	if (ImgX>0) 
+	{
+		//MsgBox="ban ne"
+		ClickMuiTen (ImgX,ImgY);		
+		Clicks (90,604);				
+		Clicks (145,600);				
+		Clicks (196,604);				
+		Clicks (245,604);	
+		Clicks (145,345);	//giua man hinh
+	}
+	FindImage ("/TankSS20/TenBan3_237_588.bmp",235,585,10,10,95,5,5,5,1); // mui tenmau vang xay dung muitenxd_173_232
+	if (ImgX>0) 
+	{
+		MsgBox="ban ne 4 nut"		
+		Clicks (90,604);				
+		Clicks (245,604);				
+		Clicks (145,600);				
+		Clicks (245,604);				
+		Clicks (196,604);				
+		Clicks (245,604);			
+		Clicks (145,345);	//giua man hinh
+	}
+	
+	
+	
+	
+	CheckImage ("/TankSS20/Ban2_240_588.bmp",240,588,80,10,10,10,1); // Noi chuyen
+	if (Call>0) 
+	{	
+		//MsgBox="nhan ban 2"
+		Clicks (90,604);				
+		Clicks (245,604);				
+		Clicks (145,600);				
+		Clicks (245,604);				
+		Clicks (196,604);				
+		Clicks (245,604);	
+		Clicks (145,345);	//giua man hinh		
+		//return 1;
+	}
+	
+	
+	CheckImage ("/TankSS20/Back_11_21.bmp",11,21); // Noi chuyen
+	if (Call>0) 
+	{	
+	
+		Clicks (11,21);				
+		//return 1;
+	}
+	
+	
+	
+	
+
+	FindImage ("/TankSS20/dichuyen.bmp",210,290,80,320,95,5,5,5,0); // nhan nhiem vu di chuyen
+	if (ImgX>0) 
+	{		
+	//	alert ("nhan ok nhan nhiem cu di chuyen ");
+		LeftClick=ImgX,ImgY,2,50
+		Sleep=500
+	//	Clicks (ImgX,ImgY);
+		return 1;
+	}
+	
+	
+
+	FindImage ("/TankSS20/muiten.bmp",10,10,260,580,95,5,5,5,2); // mui tenmau vang xay dung muitenxd_173_232
+	if (ImgX>0) 
+	{		
+		//alert ("bo quamui 00 ");
+		ClickMuiTen (ImgX,ImgY);
+		return 1;
+	}
+	
+
+
+	FindImage ("/TankSS20/muiten2.bmp",10,10,260,580,95,5,5,5,2); // mui tenmau vang xay dung muitenxd_173_232
+	if (ImgX>0) 
+	{
+		//alert ("bo quamuiten2");
+		ClickMuiTen (ImgX,ImgY);
+		return 1;
+		
+	}
+	
+	FindImage ("/TankSS20/muiten3.bmp",10,10,260,580,95,5,5,5,2); // mui tenmau vang xay dung muitenxd_173_232
+	if (ImgX>0) 
+	{
+		//alert ("muiten3 ");
+		ClickMuiTen (ImgX,ImgY);
+		return 1;
+		
+	}
+	
+	FindImage ("/TankSS20/muiten4.bmp",10,10,260,580,95,5,5,5,2); // mui tenmau vang xay dung muitenxd_173_232
+	if (ImgX>0) 
+	{
+		//alert ("mui ten 4");
+		ClickMuiTen (ImgX,ImgY);		
+		return 1;
+	}
+	
+	FindImage ("/TankSS20/ChienDauBoQua.bmp",190,380,90,60,95,5,5,5,1); // mui tenmau vang xay dung muitenxd_173_232
+	if (ImgX>0) 
+	{
+		//alert ("bo qua chien dau");
+		ImgX+=5;
+		ImgY+=5;
+		Clicks (ImgX,ImgY);
+		wait (2000);
+		//Clicks (150,130);
+		return 1;
+	}
+	
+		
+		Clicks (140,322);		//ko lam j thi nhan giua man hinh
+	
+	
+	return 1;
+}
+
+
+label=Main
+  Main ();
+  Wait (10);
+goto=Main

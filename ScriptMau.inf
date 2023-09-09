@@ -1,0 +1,21 @@
+// Sử dụng các hàm được viết sắn trong file  Config/function.inf
+// Mở file nay` để biết các hàm có thể sử dụng làm auto, cách gọi hàm, đặt tên biến, biến trả về sau khi gọi hàm,...
+
+include=Config/function.inf
+
+
+function Main ()
+{
+// Người dùng viết code bắt đầu từ chổ này xuống
+
+....
+
+/// Kết thúc hàm main
+return 1;
+}
+
+
+label=Main
+Main ();
+Wait (10);
+goto=Main

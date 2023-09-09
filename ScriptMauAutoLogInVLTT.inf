@@ -1,0 +1,55 @@
+// Sử dụng các hàm được viết sắn trong file  Config/function.inf
+// Mở file nay` để biết các hàm có thể sử dụng làm auto, cách gọi hàm, đặt tên biến, biến trả về sau khi gọi hàm,...
+
+include=Config/function.inf
+
+
+
+// chinh 600 x 300 - 80 << bang setting mumu xap xep chia 5
+//set Size  220 x 140
+//214 x 108
+
+
+function Main ()
+{
+
+	FindImage  ("3_HOME_CHLAY_105_31.bmp",100,28,10,10,80) 
+	if (call > 0)
+	{
+		Clicks (179,39,2000);
+	}
+
+
+	FindImage  ("3_LoginID_76_81.bmp",70,76,10,10,80) 
+	if (call > 0)
+	{
+		Clicks (85,85,2000);
+	}
+
+	FindImage  ("3_Server_66_41.bmp",61,38,10,10,80) 
+	if (call > 0)
+	{
+		Clicks (90,33,2000);
+	}
+
+	FindImage  ("3_CharSL_153_92.bmp",149,88,10,10,90) 
+	if (call > 0)
+	{
+		Clicks (50,60,10000); // click nv1
+		Clicks (198,44,10000); // bat auto
+	//	Clicks (152,36,10000);
+	}
+
+
+
+
+
+
+return 1;
+}
+
+
+label=Main
+Main ();
+Wait (10);
+goto=Main

@@ -1,0 +1,116 @@
+// Sử dụng các hàm được viết sắn trong file  Config/function.inf
+// Mở file nay` để biết các hàm có thể sử dụng làm auto, cách gọi hàm, đặt tên biến, biến trả về sau khi gọi hàm,...
+
+include=Config/function.inf
+
+var Status="Start Auto...";
+var ListItem ="";
+var PercentImage=70; 	// Tỉ lệ ảnh so sánh là giống nhau
+var WrongColor=10; 		// Sai số màu RED,GREEN,blue
+
+var CountItem=0;
+var Index=0;
+var NameIem="";
+
+// Cài đặt vị trí quét hình của túi toạ độ x , y và chiều ngang chiều dọc. Các bạn chỉnh lại cho phù hợp khung hình game đang chạy
+var Tui_X=31;  
+var Tui_Y=42;
+var Tui_Width = 94;
+var Tui_Height = 58;
+
+// Thêm vào danh sách các hình ảnh Item sẽ quét. Các bạn thêm Tên mới ở đây.
+ListItem.push=aItem01_a_44_81.bmp;
+ListItem.push=Item02_a_74_81.bmp;
+ListItem.push=Item03_74_132.bmp;
+ListItem.push=Item04_49_81.bmp;
+ListItem.push=Item05_74_105.bmp;
+
+
+
+
+
+
+function ClickTreoDoi (ItemClick_X , ItemCLick_Y)
+{	
+    // In trang thái vào biến status để theo dỏi đang làm cái gì
+		Status="Sell Item [";
+		Status++=Index;
+		Status++="]  : ";
+		Status++=NameIem;
+		Status++=" (";
+		Status++=ItemClick_X;
+		Status++=",";
+		Status++=ItemCLick_Y;
+		Status++=")";
+		
+	Clicks (ItemClick_X,ItemCLick_Y,2000) ; // Nhấn vào vị trí x,y Item tìm được sau đó chờ trong 2 giây.
+	
+	
+	// ******* Các bạn phải tự lấy toạ độ và viết thêm ở đây khúc sau như click tăng giá,Click Max số lượng, click đồng ý ....	
+	Clicks (314,69,1000); //<<<<< tự copy sữa toạ độ và viết ở đây.
+	Clicks (314,69,1000); //<<<<< tự copy sữa toạ độ và viết ở đây.
+	Clicks (314,69,1000); //<<<<< tự copy sữa toạ độ và viết ở đây.
+	
+	Clicks (286,98,1000); // nhan o giau gia
+	
+	Clicks (254,201,1000); // nhan max
+	Clicks (313,198,1000); // nhan dong y
+	Clicks (240,150,1000); // nhan dong y lan 2
+	
+	MsgBox=" lam xong";
+	
+	return 1;
+}
+
+
+
+
+var LenText=0;
+
+function Main ()  // Đây là hàm Auto chính sẽ luôn luôn chạy
+{
+	// Khai báo các biến Tạm để xữ lý Code
+	
+	/////////// CODE QUÉT HÌNH ẢNH //////////////
+	CountItem = ListItem.Count;  // Lấy tổng số lượng tên hình ảnh Item1
+	label=LOOP1;   // Nhãn đẻ quay lại khi chưa duyệt hết ITEM
+	
+		NameIem = ListItem[Index];  //Lấy tên Item ở vị trí Index ra
+		
+		LenText=NameIem.len;
+		if (LenText <3 )
+		{
+			
+			Index=0;
+			return 0;
+		}
+		
+		Status="Find Item [";
+		Status++=Index;
+		Status++="] : ";
+		Status++=NameIem;
+		
+		//MsgBox=NameIem;// Xuất hiện thông báo tên ITEM để kiểm tra code và các biến
+		
+		ImgSearch=NameIem,Tui_X,Tui_Y,Tui_Width,Tui_Height,PercentImage,WrongColor,WrongColor,WrongColor
+		if (ImgX>0)  // Nếu tìm thấy hình ảnh ITEM Này
+		{
+			ClickTreoDoi (ImgX,ImgY);  // Gọi Click Treo đồ với toạ độ x,y tìm được bỏ vào hàm
+		}
+	
+	
+	
+	if (Index < CountItem) // Nếu Biến đếm Index vẫn còn nhỏ hơn số lượng ITEM cần check
+	{
+		Index=Index+1; // Tăng lên 1
+		goto=LOOP1;  // Nhãy về dòng script có label tên bằng LOOP1
+	}
+	
+	return 1;
+}
+
+
+label=Main; // Đặt tên nhản để script goto nhảy về
+	Main ();
+	Sleep (10);  //chờ trong 10 mily giây
+goto=Main; // quay lại dong label=Main để luôn chạy lại hàm Main

@@ -1,0 +1,153 @@
+//AutoScript Phone TIKTOK COIN
+//218x480  - 480  SD
+
+include=Config/function.inf
+
+var StatusAuto="Open Tiktok";
+var TimeView1Video = 10000;
+
+function NextVideo ()
+{
+	adb='shell input touchscreen swipe 250 500 250 -800'; 
+	return 1;
+}
+
+
+function WaitingOpenGiftButton (Delay)
+{	
+	var TickEnd =0; 
+	var TickNow =0; 
+	GetTickCount ();
+	TickEnd=call;  
+	TickEnd +=Delay;
+	StatusAuto="Waiting button ...";
+	Sleep (2000);
+	label=Loop1
+	
+	FindImage ("New_EndTime_72_379.bmp",67,375,10,10) ; //Check Button Endtime gift
+	if (call>0)
+	{
+		StatusAuto="Time end OK...";		
+		Clicks (ImgX,ImgY,1000); // button open gift
+		Clicks (ImgX,ImgY,2000); // button open gift
+		 Clicks (100,100,1000);
+		return 1;
+	}
+	
+	FindImage ("New_Waiting_93_247.bmp",88,242,10,10,70,10,10,10) ; //Check have image Watting gift
+	if (call==0)
+	{
+		StatusAuto="Button time error....";
+		return 0;
+	}
+	
+	//Clicks (90,400,100); // Alway client to button open gift
+	
+	GetTickCount ();
+	TickNow=call;   
+	if ( TickNow > TickEnd)  
+	{
+		StatusAuto="Time end error...";
+		return 0;
+	}
+	
+	goto=Loop1;  
+	return 0;
+}
+
+function FindGiftInVideo () // this is function checking video have image gift
+{
+	var TickEnd =0; 
+	var TickNow =0; 
+	GetTickCount ();
+	TickEnd=call;  
+	TickEnd +=TimeView1Video;
+	StatusAuto="Finding Gift ...";
+	label=Loop1
+	
+	
+	FindImage ("New_Gift01_12_65.bmp",8,61,10,10,60,20,20,20) ; 
+    if (call>0) // tim thay Hinh Hop qua
+	{
+		return 1;
+	}
+	
+	FindImage ("aNew_Gif02_12_65.bmp",8,60,10,10,60,20,20,20) ; 
+    if (call>0) // tim thay Hinh Hop qua
+	{
+		return 1;
+	}
+	
+	FindImage ("aNew_Gift03_12_64.bmp",8,60,10,10,60,20,20,20) ; 
+    if (call>0) // tim thay Hinh Hop qua
+	{
+		return 1;
+	}
+	
+	FindImage ("aNew_Gif04_12_65.bmp",8,60,10,10,60,20,20,20) ; 
+    if (call>0) // tim thay Hinh Hop qua
+	{
+		return 1;
+	}
+	
+	FindImage ("aNew_Gif04_12_65.bmp",8,60,10,10,60,20,20,20) ; 
+    if (call>0) // tim thay Hinh Hop qua
+	{
+		return 1;
+	}
+	
+	FindImage ("Anew_Gif05_13_65.bmp",8,60,10,10,60,20,20,20) ; 
+    if (call>0) // tim thay Hinh Hop qua
+	{
+		return 1;
+	}
+	
+	FindImage ("aNew_Gif10_12_64.bmp",8,60,10,10,60,20,20,20) ; 
+    if (call>0) // tim thay Hinh Hop qua
+	{
+		return 1;
+	}
+	
+	FindImage ("anew_Gif06_12_65.bmp",8,60,10,10,60,20,20,20) ; 
+    if (call>0) // tim thay Hinh Hop qua
+	{
+		return 1;
+	}
+	
+	
+	
+	
+	GetTickCount ();
+	TickNow=call;   
+	if ( TickNow > TickEnd)  
+	{		
+		return 0;
+	}
+	goto=Loop1;
+	return 0;
+	
+}
+
+function Main () // Ðây là hàm chính luôn luôn ch?y
+{
+
+  FindGiftInVideo ();
+  if (call>0) // tim thay Hinh Hop qua
+  {
+	Clicks (ImgX,ImgY,2000); // Nh?n vào hình h?p quà
+	WaitingOpenGiftButton (400000); // tìm ki?m nút m? quà trong 400 giây
+	return 1; // thoát kh?i hàm main
+   
+  }
+  
+  StatusAuto="Next video after 10 seconds dont have gìft ...";
+  Clicks (100,100,1000); // Click into center video before scrool next video
+  NextVideo (); // n?u video sau 10 giây không tìm th?y h?p quà thì lu?t b?
+  return 1;
+}
+
+
+label=Main
+Main ();
+Wait (1);
+goto=Main

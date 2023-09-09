@@ -1,0 +1,160 @@
+// Sử dụng các hàm được viết sắn trong file  Config/function.inf
+// Mở file nay` để biết các hàm có thể sử dụng làm auto, cách gọi hàm, đặt tên biến, biến trả về sau khi gọi hàm,...
+
+include=Config/function.inf
+
+var tempX=0;
+var tempY=0;
+
+var TickPause=0;
+
+function Main ()
+{
+// Người dùng viết code bắt đầu từ chổ này xuống
+
+
+
+
+	
+	// kiểm hình ảnh mũi tên làm nhiệm vụ đầu tiên
+	 //FindImage  (NameIMG,x,y,      width,height,percent,denta_red,denta_green,denta_blue,TypeCompare)
+	 
+	FindImage ("Mir4_NvChienBinh_Check1_491_71.bmp",485,71,40,1,90,5,5,5,2); // chi so sanh hinh mau vang
+	if (ImgX>0) 
+	{
+		tempX=ImgX+80;		
+		Click (tempX,ImgY);
+		msgbox="aa1";
+		wait (1000);
+		return ;
+	}
+	
+	//FindImage ("Mir4_NvChienBinh_Checklv6_506_65.bmp",503,63,6,6,98,5,5,5,1); // chi so sanh hinh trang danh cho lv6 tro len
+	
+	CheckImage ("Mir4_CheckAS_627_70.bmp",627,70,60,80,80,80,0);
+	if (call>0) 
+	{
+		goto=ra;
+	}
+		
+		//FindImage ("Mir4_NvChienBinh_Checklv6_1_526_66.bmp",526,66,6,6,80,15,15,15,0); // chi so sanh hinh trang danh cho lv6 tro len
+		
+		
+		CheckImage ("Mir4_NvChienBinh_Checklv6_1_526_66.bmp",526,66,90,40,40,40,1);
+		if (call>0) 
+		{
+			//MsgBox="nhan ok nhan nv vi 2 dieu kien"
+			Click (575,75);		
+			wait (1000);
+			ResetTickPause (); // khong khai khoang trong 10 giay
+			//return ;
+		}
+		
+		//MsgBox="nhan ok nh"
+		
+		label=ra
+		
+		CheckImage ("Mir4_NvChienBinh_Checklv6_2_527_67.bmp",527,67);
+		//FindImage ("Mir4_NvChienBinh_Checklv6_2_527_67.bmp",525,65,6,6,80,15,15,15,0); // chi so sanh hinh trang danh cho lv6 tro len
+		if (call>0)
+		{		
+			//MsgBox="nhan ok nhan nv vi 2 dieu kien2"
+			Click (575,75);
+			wait (1000);
+			return ;
+		}
+	
+	
+		
+	//}
+	
+	
+	CheckImage ("Mir4_NvChienBinh_Checklv6_BOqua_19_12.bmp",19,12,85,30,30,30);
+	if (call>0)
+	{		
+		Click (19,12);
+		wait (1000);
+		return ;
+	}
+	
+	
+	FindImage ("Mir4_NvChienBinh_Check3_488_69.bmp",485,69,40,1,90,5,5,5,2); // chi so sanh hinh mau vang
+	if (ImgX>0) 
+	{
+		tempX=ImgX+80;		
+		Click (tempX,ImgY);
+	//	msgbox="aa2";
+		wait (1000);
+		return ;
+	}
+	
+	CheckImage ("Mir4_NvChienBinh_Check2_584_262.bmp",584,262);
+	if (call>0)
+	{
+		tempX=ImgX+10;		
+		tempY=ImgY+10;		
+		Click (tempX,tempY);
+		wait (1000);
+		return ;
+	}
+	
+	CheckImage ("Mir4_NvChienBinh_Check4_605_15.bmp",605,15,90,5,5,5,1); // bo qua
+	//CheckImage ("Mir4_NvChienBinh_Check4_605_15.bmp",605,15,90,5,5,5,0); // bo qua
+	if (call>0)
+	{
+		tempX=ImgX-50;		
+		tempY=ImgY+5;		
+		//msgbox="abo qua" + tempX;
+		Click (587,23);
+		wait (1000);
+		Click (587,23);
+		wait (1000);
+		Click (587,23);
+		return ;
+	}
+	
+	//CheckImage ("Mir4_NvChienBinh_Check5_588_267.bmp",605,15,90,5,5,5,1); // bo qua
+	FindImage ("Mir4_NvChienBinh_Check5_588_267.bmp",585,265,6,4,90,5,5,5,1); // chi so sanh hinh mau vang
+	if (ImgX>0) 
+	//if (call>0)
+	{	
+	//	msgbox="abo qua aa"+ImgX;
+		Click (ImgX,ImgY);
+		wait (1000);
+		return ;
+	}
+	
+	
+	
+	CheckImage ("Mir4_NvChienBinh_CheckSkillNe_616_217.bmp",616,217,80,10,10,10);
+	if (call>0)
+	{		
+		Click (616,217);
+		wait (1000);
+		return ;
+	}
+	
+//	msgbox="abaa";
+
+	GetTimeImagePause (200,20);
+	TickPause=Call;
+	if (TickPause > 10000) //bam nut Khai khoan  vi lam nhiem vu dung qua lau
+	{
+		Click (222,285);
+		ResetTickPause ();
+		Sleep=8000
+		//MsgBox="game dung yen qua lauđ d "+TickPause;
+	
+	}
+
+
+
+/// Kết thúc hàm main
+return 1;
+}
+
+
+label=Main
+Main ();
+Wait (10);
+goto=Main

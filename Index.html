@@ -1,0 +1,346 @@
+<html>
+<head>
+<title>AutoUser</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+ <style>
+ 
+ 
+#Bang1 
+{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#Bang1 td, #Bang1 th 
+{
+    border: 1px solid #ddd;
+    padding: 0px;
+	background-color: #616160;
+	color: aliceblue;
+}
+
+#Bang1 tr:nth-child(even){background-color: #f2f2f2;}
+
+#Bang1 tr:hover {background-color: #ddd;}
+
+#Bang1 th 
+{
+    padding-top: 1px;
+    padding-bottom: 2px;
+    text-align: center;
+    background-color: #424242;
+    color: white;
+}
+
+ 
+#Bang1 
+{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#Bang2 td, #Bang1 th 
+{
+    border: 1px solid #ddd;
+    padding: 0px;
+	background-color: #616160;
+	color: aliceblue;
+}
+
+#Bang2 tr:nth-child(even){background-color: #f2f2f2;}
+
+#Bang2 tr:hover {background-color: #ddd;}
+
+#Bang2 th 
+{
+    padding-top: 1px;
+    padding-bottom: 2px;
+    text-align: center;
+    background-color: #424242;
+    color: white;
+}
+ 
+ </style>
+ 
+ <h2 style="width: 100%; text-align:center"  >  DEVELOP OPEN SOURCE AUTO SCRIPT 2.0 (JAVASCRIPT / HTML  / CSS) </h2>
+ <button class="btn btn-danger" 	onclick="ClickTab();" >  	Click a Tab</button>
+ <button class="btn btn-warning" 	onclick="ClickAll();">  	Click ALL </button>
+	<input id="m_Input1"  style="width:60px" value="50,50"  />
+ <button class="btn btn-primary"	onclick="ClickHomeALL();">  HOME ALL</button>
+ <button class="btn btn-info"  		onclick="ClickF1All();">  	Press F1 ALL </button>
+ <button class="btn btn-warning"  	onclick="ClickOpenPhoneALL();">  OpenAllPhone</button>
+ <button class="btn btn-danger"  	onclick="ClickDevces();">  GetDevces</button>
+ <button class="btn btn-danger"  	onclick="ShowDIV (m_DlgScript);">  RunScript</button>
+ <button class="btn btn-danger"  	onclick="Auto.Control (100);">  MultiControl</button>
+ <button class="btn btn-danger"  	onclick="Auto.Control (101);">  SortCase</button>
+ <button class="btn btn-danger"  	onclick="Auto.SetSize (1100,600);">  SetSize</button>
+ </br>
+ MemValue 
+ <input id="m_Input2"  style="width:80px" value="call"  /> =  
+ <input id="m_Input3"  style="width:190px" value="null"  />
+ <button class="btn btn-danger" 	onclick="ClickSetMem();" >  	SET</button>
+ 
+ Script Auto Tab 
+ 
+  <select id="m_Combo1" style="width: 400px" onclick="ClickOnComboBoxScript ();" >
+    <option value="volvo">Auto.inf</option>  
+  </select>
+ 
+ 	<table class="container text-center"id="Bang1">
+	  <thead>
+		  <tr>
+			<th class='BangWallHeader' style="width: 50px !important;">Index</th>
+			<th class='BangWallHeader' style="width: 80px !important;">Handle</th>			
+			<th class='BangWallHeader' style="width: 180px !important;">Name </th>
+			<th class='BangWallHeader' style="width: 250px !important;">Script</th>
+			<th class='BangWallHeader' style="width: 150px !important;">Status</th>
+			
+		  </tr>
+	  <thead>
+	  
+	  
+	  <tbody id="DataBang1">
+	 </tbody>
+
+	</table>
+	
+	<h3 style="width: 100%; text-align:center"  >  Memory Tab Select  </h3>
+	
+	<table class="container text-center"id="Bang2">
+	  <thead>
+		  <tr>
+			<th class='BangWallHeader' style="width: 100px !important;">Index</th>
+			<th class='BangWallHeader' style="width: 160px !important;">Name</th>			
+			<th class='BangWallHeader' style="width: 500px !important;">Value </th>
+		  </tr>
+	  <thead>
+	  
+	  
+	  <tbody id="DataBang2">
+	 </tbody>
+
+	</table>
+	
+	<h3 style="width: 100%; text-align:center"  >  WHAT IS NEW IN UPDATE  </h3>
+	<iframe src="http://autonow.cf/Bangtin.html" title="My TITLE" style="width:100%; height:50%"  ></iframe>
+	
+	
+	
+	
+	<div id="m_DlgScript" style ="text-align: center;position: absolute ;top: 10%; left: 25%;     background-color: #f8feff ;display: none;     border: 1px solid #536a52;" >
+		<div style ="color: #d4d9dd; background-image: url('http://memsns.cf/bar3.png');  margin-left: 1px;height: 35px;padding: 7px">  
+		<img src="http://memsns.cf/notice.png" style="width: 22px;margin-left: 2px;margin-right: 0px;margin-top: -0px"/> 
+		<a id="" style="color : #ffffff"> &nbsp;&nbsp; Run Script on tab select &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>    <img src="http://memsns.cf/close.png" style="width: 28px;margin-left: 2px;margin-right: -4px;margin-top: -3px;float: right;" onclick="HideDIV ('m_DlgScript');" /> </div>  </br>
+		  <textarea id="m_IdScript" rows="20" cols="60"> // Enter your script want to run here </textarea>
+		  <div class="col text-center">
+		  <button style="margin-bottom: 15px;margin-top: 15px;" class="btn btn-default" onclick="CallTestScript ();" >  RunScript  </button>
+		</div>
+	</div>
+	
+	<div id="m_MsgBOX" style ="text-align: center;position: absolute ;top: 20%; left: 40%;     background-color: #f8feff ;display: none;     border: 1px solid #536a52;" >
+		<div style ="color: #d4d9dd; background-image: url('http://memsns.cf/bar3.png');  margin-left: 1px;height: 35px;padding: 7px">  
+		<img src="http://memsns.cf/notice.png" style="width: 22px;margin-left: 2px;margin-right: 0px;margin-top: -0px"/> 
+		<a id="MsgBox_Title" style="color : #ffffff"> &nbsp;&nbsp; Notice to you. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>    <img src="http://memsns.cf/close.png" style="width: 28px;margin-left: 2px;margin-right: -4px;margin-top: -3px;float: right;" onclick="HideDIV ('m_MsgBOX');" /> </div>  </br>
+		<div id="m_TextMsgBox" style="padding: 20;">  You are login wrong Password aaaaaaaaaaaaaaaaaaaaaaaaaaa </div>
+		  <div class="col text-center">
+		  <button style="margin-bottom: 15px;margin-top: 15px;" class="btn btn-default" onclick="HideDIV ('m_MsgBOX');" >  OK  </button>
+		</div>
+	</div>
+	
+	
+ 
+</head>
+
+
+
+<body>
+
+<script type="text/javascript" src="http://duysns.tk/js/jquery.min.js"></script></head>
+<script type="text/javascript" src="http://bacatool.tk/d_commond.js"></script></head>
+<script type="text/javascript" src="http://autonow.cf/auto.js"></script></head>
+<script>
+
+	AddDlgMove (m_MsgBOX);	//<<< Add thuoc tinh nam keo hop thoai Thong BAO
+	AddDlgMove (m_DlgScript); //<<< Add thuoc tinh nam keo hop thoai RUN SCRIPT
+	
+	// cac ham khac cua Auto mo console cua ggchome go bien nay  >>>>> Auto   hoac bien nay  >>> Auto.Arr[0]
+	// neu la auto khong thuoc TAB NAO th xai bien nay >>>AutoTab
+	
+	var IndexAutoSelect=0;
+	var IndexMemSelect=0;
+	var mAutoSelect=null;
+	var IsClickOnOffAuto=0;
+	
+	
+	function ClickTab ()
+	{
+		
+		//cach 1
+		//Auto.Arr[IndexAutoSelect].CallScript ("LeftClick="+m_Input1.value+",2"); //LeftClick=x,y,2 <<< cach 1
+		//cach2
+		//mAutoSelect.CallScript ("LeftClick="+m_Input1.value+",2"); //LeftClick=x,y,2  <<< bien mAutoSelect duoc lay tu ham ClickRow  = auto dang focus
+		//cach 3
+		var Point  = m_Input1.value.split (",");
+		mAutoSelect.Click (Point[0],Point[1]);  // do danh dang cho m_Input1= 50,50 nen tach no ve mang
+		
+		
+	}
+	
+	function ClickAll ()
+	{
+		var TongAuto = strlen (Auto.Arr);		
+		for (var i=0;i< TongAuto;i++)		
+			Auto.Arr[i].CallScript ("LeftClick="+m_Input1.value+",2"); //LeftClick=x,y,2
+			
+	}
+	
+	function ClickHomeALL ()
+	{
+		var TongAuto = strlen (Auto.Arr);		
+		for (var i=0;i< TongAuto;i++)		
+			Auto.Arr[i].ADBPressHOME ();
+	}
+	
+	function ClickF1All ()
+	{
+		var TongAuto = strlen (Auto.Arr);		
+		for (var i=0;i< TongAuto;i++)		
+			Auto.Arr[i].PressKey (112);
+	}
+	
+	function ClickDevces ()
+	{
+		var s= Auto.Arr[IndexAutoSelect].GetDevices();		 	// hoac mAutoSelect.GetDevices();
+		var s2=Auto.Arr[IndexAutoSelect].GetValue ("fData");	// hoac mAutoSelect.GetValue ("fData");
+		MsgBoxs ("You have "+s+ "  device(s) online. \r\n"+s2);
+	}
+	
+	function ClickRow (Index,Handle)
+	{
+		IndexAutoSelect=Index;
+		 mAutoSelect = Auto.FindAutoTabByHandle (Handle);
+		if (mAutoSelect!=null)
+		{
+			m_Combo1.value=mAutoSelect.Info.Script;
+		}
+		MyTimer ();
+		if (IsClickOnOffAuto==1) // nhan vao tam hinh` Play / Stop
+		{			
+			if (mAutoSelect.Info.IsAuto==0)  	mAutoSelect.Ctrl_OnAutoIndex 	(mAutoSelect.Index);
+			else 								mAutoSelect.Ctrl_OffAutoIndex 	(mAutoSelect.Index);
+		}		
+		IsClickOnOffAuto=0;
+	}
+	
+	function ClickRows (Index)
+	{
+		IndexMemSelect=Index;
+		MyTimer (true);
+		m_Input2.value = Auto.Arr[IndexAutoSelect].ArrValue[IndexMemSelect].Name;
+		m_Input3.value = Auto.Arr[IndexAutoSelect].ArrValue[IndexMemSelect].Value;
+	}
+	
+	function ClickOpenPhoneALL ()
+	{
+		Auto.Arr[IndexAutoSelect].Ctrl_StartPhoneAll (480);
+	}
+	
+	function ClickSetMem ()
+	{
+		Auto.Arr[IndexAutoSelect].SetValue (m_Input2.value,m_Input3.value);
+	}
+	
+	
+	function UpdateListScript ()
+	{
+		var s="";
+		var u= Auto.GetListFile ("*.inf");	
+		var Tong = strlen (u);
+		for (var i=0;i<Tong;i++)
+		{
+			 s+='<option value="'+u[i].Name+'">'+u[i].Name+'</option>  '
+		}
+		m_Combo1.innerHTML=s;
+	}
+	
+	function CallTestScript ()
+	{
+		mAutoSelect.LoadScriptText (m_IdScript.value,"RunFrom Extern");
+		mAutoSelect.OnAuto ();
+	}
+	
+	function ClickOnComboBoxScript ()
+	{
+		if (mAutoSelect==null) 
+		{
+			Log (m_Combo1.value);
+			return ;
+		}
+		mAutoSelect.Ctrl_LoadScriptFileIndex (mAutoSelect.Index,m_Combo1.value);
+	}
+	
+	function MyTimer (isNoGetData)
+	{
+		var s="";
+		var sColor="";
+		var TongAuto = strlen (Auto.Arr);
+		var mTabAuto;
+		var TextPlay;
+		for (var i=0;i< TongAuto;i++)
+		{
+			mTabAuto=Auto.Arr[i].Info;
+			if (mTabAuto.Handle <1) continue;			
+			if (mAutoSelect==null) mAutoSelect = Auto.Arr[i];
+			sColor="";			
+			if (i==IndexAutoSelect) sColor="style ='background-color: #9b9b94'";
+			s+="<tr onclick='ClickRow("+i+","+mTabAuto.Handle+");'>"
+			
+			
+			if (mTabAuto.IsAuto==1) 	TextPlay='<img src="http://bacatool.tk/stop.png" style="width:25px"  onclick="IsClickOnOffAuto=1;" /> ';
+			else 						TextPlay='<img src="http://bacatool.tk/play.png" style="width:25px"  onclick="IsClickOnOffAuto=1;" /> ';
+			
+			s+="<td "+sColor+"> " +TextPlay+mTabAuto.Index+ "</td>";
+			s+="<td "+sColor+"> " +mTabAuto.Handle+ "</td>";
+			s+="<td "+sColor+"> " +mTabAuto.Name+  " ["+  mTabAuto.Left+","+mTabAuto.Top+"x"+(mTabAuto.Right-mTabAuto.Left) +","+(mTabAuto.Bottom-mTabAuto.Top) + "]</td>";
+			s+="<td "+sColor+"> " +mTabAuto.Script+ "</td>";
+			s+="<td "+sColor+"> " +mTabAuto.IndexScript+"/"+mTabAuto.CountScript+ "</td>";
+			s+="</tr>"
+		}
+		DataBang1.innerHTML = s;	
+		
+		if (isNoGetData==null) Auto.Arr[IndexAutoSelect].GetAllValue ();
+		s="";
+		
+		TongAuto = strlen (Auto.Arr[IndexAutoSelect].ArrValue);
+		for (var i=0;i< TongAuto;i++)
+		{
+			mTabAuto=Auto.Arr[IndexAutoSelect].ArrValue[i];			
+			sColor="";			
+			if (i==IndexMemSelect) sColor="style ='background-color: #9b9b94'";
+			s+="<tr onclick='ClickRows("+i+");'>"
+			s+="<td "+sColor+"> " +i+ "</td>";
+			s+="<td "+sColor+"> " +mTabAuto.Name+ "</td>";
+			s+="<td "+sColor+"> " +mTabAuto.Value+ "</td>";			
+			s+="</tr>"
+		}
+		DataBang2.innerHTML = s;	
+	}
+		
+		
+	//MsgBoxs ("Day la 1 hop thoai vi du code");
+	Settimer (MyTimer,1000);
+	UpdateListScript ();
+	m_IdScript.value=m_IdScript.value+"\r\n  include=Config/function.inf  \r\n\r\n   var Count = 0;  \r\n   Count++; \r\n   Click (100,100); \r\n   Sleep (1000); \r\n   Alert ('Hello SIR. Click Here to Exit');"
+	Auto.SetSize (1100,700);
+	Auto.SetName ("Auto Srcipt 3.0");
+	//MyTimer ();
+		
+	
+
+
+</script>
+</body>
+</html>

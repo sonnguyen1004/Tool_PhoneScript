@@ -1,0 +1,57 @@
+// Sử dụng các hàm được viết sắn trong file  Config/function.inf
+// Mở file nay` để biết các hàm có thể sử dụng làm auto, cách gọi hàm, đặt tên biến, biến trả về sau khi gọi hàm,...
+
+include=Config/function.inf
+
+var TimeMin_XemVideo=5000; // thoi gian random MIN
+var TimeMax_XemVideo=10000; // thoi gian random MÃ
+
+var SoVideoSeFollow=3; // xem bao nhieu video ff 1 lan
+var SoVideoXemFL=0;
+var TongVideo=0;
+
+function NhanTIMTrenTiktok ()
+{
+	Clicks (150,250,50);	
+	Clicks (150,250,50);	
+	return 1;
+}
+
+function NhanFollow ()
+{
+	Clicks (250,185,3000);	 //nhan anh dai dien
+	Clicks (115,192,1000);	 //nhan FL
+	Clicks (17,32,1000);	 //nhan BACK
+	return 1;
+}
+
+function NextVideo ()
+{
+	adb='shell input touchscreen swipe 250 500 250 -1000'; 
+	fSleep=1000;
+	return 1;
+}
+
+function Main ()
+{
+	TongVideo++;
+	SoVideoXemFL++;
+	SleepRandom (TimeMin_XemVideo,TimeMax_XemVideo);
+	NhanTIMTrenTiktok ();
+	
+	if (SoVideoXemFL > SoVideoSeFollow)
+	{
+		SoVideoXemFL=0;
+		NhanFollow ();
+	}
+	
+	NextVideo ();
+
+	return 1;
+}
+
+
+label=Main
+Main ();
+Wait (10);
+goto=Main

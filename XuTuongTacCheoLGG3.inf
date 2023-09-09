@@ -1,0 +1,307 @@
+﻿// Sử dụng các hàm được viết sắn trong file  Config/function.inf
+// Mở file nay` để biết các hàm có thể sử dụng làm auto, cách gọi hàm, đặt tên biến, biến trả về sau khi gọi hàm,...
+
+include=Config/function.inf
+
+/// yeu cau tat het cac tab trinh duyet
+// chi mo 1 tab  link : https://tuongtaccheo.com/tiktok/kiemtien/
+// dang nhap san acc vo ung dung tiktok va mo len san
+// nick tiktok phai la ten tieng viet co anh dai dien
+// nick toltol phai bat quyen rieng tu cho phep moi nguoi thay like
+
+
+
+var TOKEN = "access_token=08fc50dc5e044c6d08017bc7c04b98db"
+var Host ="tuongtaccheo.com";
+var TaiKhoan="";
+var NickTiktok="Notlogin";
+var TongXU=0;
+var XuNhanDuoc=0;
+var TongXuCai=0;
+var TypeAutoTT=1;  //0 TIM 1 FOLLOW
+var CountJOB=0;  
+var IndexJOB=0;
+var MaxJob=5; // Bao nhieu video nhan tien 1 lan
+
+var LinkTikTok="";
+var LinkID="";
+var IDPOST="";
+
+var X_Tim=0;
+var Y_Tim=0;
+var dataWeb;
+
+
+
+
+function Clicks (x,y,delay)
+{
+	Click (x,y);
+	wait (delay);
+	return 1;
+}
+
+function ResetAPK ()
+{	
+	//AdbPressSWITCH ();
+	Clicks (242,632,1000); //NUT MENU PHIA DUOI DT		
+	ClickMove (150,411,150,10); // toa do truot tiktok tu duoi len tren de tat tiktok
+	Sleep (2000);
+	Clicks (37,63,2000); //Mo TT
+	return 1;
+}
+
+function NhanTIMTrenTiktok ()
+{
+	Clicks (150,250,50);	
+	Clicks (150,250,50);	
+	
+	return 1;
+}
+
+function NhanFL ()
+{
+	FindImage ("FollowTiktok.bmp",80,150,100,300);
+	if (ImgX>0)
+	{	
+		ImgX+=5;
+		ImgY+=5;		
+		Click (ImgX,ImgY);
+	}
+	return 1;
+}
+
+
+function NhanTIEN ()
+{
+	 Web_SetHeader ("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+	 Web_SetHeader ("X-Requested-With","XMLHttpRequest");
+	 
+	 if (TypeAutoTT==1) 
+	 {
+		Web_PostData (Host,"/tiktok/kiemtien/subcheo/nhantien.php",IDPOST,443); 
+	 }
+	 
+	 if (TypeAutoTT==0) 
+	 {
+		Web_PostData (Host,"/tiktok/kiemtien/nhantien.php",IDPOST,443); 
+	 }
+
+	dataWeb=fdata;
+	dataWeb.replaceChar=34,*
+	GetTextContend (dataWeb,"sodu*:","}");
+	XuNhanDuoc=fData;	 
+	if (XuNhanDuoc>0)
+	{
+	     TongXU+=XuNhanDuoc;
+		 TongXuCai+=XuNhanDuoc;
+	}
+	return 1;
+}
+
+function PlayJOB (TypeGet)
+{
+	
+	var NEWID=LinkID[IndexJOB];
+	var NEWLINK = LinkTikTok[IndexJOB];
+	
+	if (IndexJOB>0) 
+	{
+		IDPOST++="%2C";
+	}
+	IDPOST++=NEWID;
+	
+	var sCALL="shell am start -a android.intent.action.VIEW -d ";
+	
+	
+	if (TypeAutoTT==0) //TIM
+	{	
+		sCALL++=NEWLINK;
+		adb=sCALL;	
+		Sleep (5000);
+		NhanTIMTrenTiktok ();	
+	}
+	
+	if (TypeAutoTT==1) //FL
+	{
+		sCALL++="https://www.tiktok.com/@";
+		sCALL++=NEWLINK;
+		sCALL.replaceChar=96
+		adb=sCALL;	
+		Sleep (4900);
+		NhanFL ();	
+
+	}
+	
+	IndexJOB++;
+	if (IndexJOB>=CountJOB)
+	{
+		return 0;
+	}
+	
+	if (IndexJOB>MaxJob)
+	{
+		return 0;
+	}	
+	return 1;
+}
+
+function GetDataTIM (Type)
+{
+	var lenn =0;
+	var IndexStart=0;
+	SetCPU (0);	
+	LinkTikTok.clear;
+	dataWeb.clear;
+	LinkID.clear;
+	
+	var IDD="id=";
+	
+	IDPOST=IDD;	
+	//IDPOST+=61;
+	//IDPOST=ID@;
+	//IDPOST.replaceChar2=64,61
+	IndexJOB=0;
+	CountJOB=0;
+	
+	IDPOST.replaceChar=96;//xoa bo dau "
+	TOKEN.replaceChar=96//xoa bo dau "
+	
+	if (TongXU<1)
+	{
+	      Web_PostData (Host,"/logintoken.php",TOKEN,443); //b7d9091db04ce0e24d8d813edc730307 access_token=357079325e63cb2a6c1edba3487d8893	
+	     //{"status":"success","data":{"user":"aaaa","sodu":109600}}
+		dataWeb=fdata;
+		dataWeb.replaceChar=34,*
+		GetTextContend (dataWeb,"user*:*","*");
+		TaiKhoan=fData;
+		GetTextContend (dataWeb,"sodu*:","}");
+		TongXU=fData;	
+		
+
+	    Web_GetData (Host,"/cauhinh/tiktok.php",443); 				
+		GetTextContend (fdata,"/www.tiktok.com/@","?");
+		NickTiktok=fData;
+		//MsgBox = "chao ban444: "+NickTiktok;
+
+	}
+	  
+	 Web_SetHeader ("X-Requested-With","XMLHttpRequest");	 
+	 if (Type==0)
+	 {
+		Web_GetData (Host,"/tiktok/kiemtien/getpost.php",443); 	//LAY JOB TIM 
+	 }
+	 
+	 if (Type==1)
+	 {
+
+		Web_GetData (Host,"/tiktok/kiemtien/subcheo/getpost.php",443); 	//LAY JOB FOLLOW
+	 }
+	 
+	//  MsgBox="aaaaaaaa- " +TypeAutoTT;
+	 
+	dataWeb=fdata;
+	dataWeb.replaceChar=34,*
+	dataWeb.replace=\/,/	 
+	 
+	 /////// DOC HET LINK TIKTOK CAN FOLOW ////////////
+	 label=Lap;
+	
+		GetTextContend (dataWeb,"link*:*","*",IndexStart);
+		lenn = fData.len;	
+		LinkTikTok.push=fData;	
+		IndexStart=call;
+	 
+	 if (lenn>1)
+	 if (IndexStart >1)
+	 {
+		 IndexStart+=3;
+		 goto=Lap;
+	 }
+	 
+	 /////// DOC HET ID CAN FOLOW ////////////
+	 IndexStart=0;
+	 label=Lap2;
+	
+		GetTextContend (dataWeb,"idpost*:*","*",IndexStart);
+		lenn = fData.len;	
+		LinkID.push=fData;	
+		IndexStart=call;
+	 
+	 if (lenn>1)
+	 if (IndexStart >1)
+	 {
+		 IndexStart+=3;
+		 goto=Lap2;
+	 } 
+		 
+	CountJOB=LinkTikTok.Count;
+	lenn= LinkTikTok.len;	 
+	SetCPU (2);
+	
+	if (CountJOB >0)
+	{
+		return 1;
+	}
+	 return 0;
+}
+
+function DoiAuto ()
+{
+	if (TypeAutoTT==1)		
+	{
+		TypeAutoTT=0;
+		return ;
+	}
+	if (TypeAutoTT==0)		
+	{
+		TypeAutoTT=1;
+		return ;
+	}
+	return 1;
+}
+
+function Main ()
+{
+// Người dùng viết code bắt đầu từ chổ này xuống
+
+//MsgBox="AAAAAA: "+  IDPOST;
+//return ;
+
+	DoiAuto ();
+	GetDataTIM (TypeAutoTT);
+	if (call>0) // day la TIM
+	{
+		//CountJOB=4;//test
+		label=AutoTIM
+		
+		if (call>0)
+		{
+			PlayJOB ();
+			goto=AutoTIM;
+		}
+		NhanTIEN ();		
+		ResetAPK ();
+		return 1;
+	}
+	
+	if (TongXU < 1)
+	{
+		MsgBox="Login that bai hay~ kiem tra lai APIKEY";
+	}
+	OutText("het nhiem vu");
+	Web_ResetCookie ();
+	TongXU=0;
+	Sleep (2300);
+	return ;
+	
+	
+
+/// Kết thúc hàm main
+return 1;
+}
+
+label=Main
+Main ();
+Wait (10);
+goto=Main

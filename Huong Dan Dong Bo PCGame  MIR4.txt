@@ -1,0 +1,16 @@
+﻿HƯỚNG DẪN CHẠY ĐỒNG BỘ GAME MIR4 / GAME PC
+
+1. Tắt hết game nếu đang mở
+2. Chạy Tool với quyền ADMIN. 
+	tài khoản trải nghiệm :  mir4_01 đến mir4_10    pass: 111
+
+3.Add 1 tên game mới (** NẾU LÀ GAME GAME CLIENT PC KHÁC  MIR4 còn nếu là MIR4 thì mặc định đã add bỏ qua bước 3 này)
+	-> Hãy vào nút hình bánh răng (CONFIG)
+	    +CLick vào cửa sổ game muốn auto hoặc điều khiển NHẤN F5 sau đó nhấn vào Dấu + (ADD) sẽ thấy tên game hiện bên ngoài
+	
+
+4. Chạy laucher  game Chỉnh cài đặt Game là OPENGL.   (không được chọn DIRECTX) --> mở hết cửa sổ game lên.
+5. Nhấn vào MENU: VIew -> MoveCase ALl WithSize : chọn 600,400 rồi OK để thu nhỏ và xấp xếp các GAME cạnh nhau
+6  Nhìn vào nút hình 3 cái điện thoại (MULTICONTROL DEVICES)  nhấn vào nó. Mọi thao tác trên cửa sổ này thì các game Client PC sẽ chạy đồng bộ nhau.
+
+Đễ control đúng vị trí chuột thì WINDOWS FONT Size phải là 100%. Không được chọn 125% 150%

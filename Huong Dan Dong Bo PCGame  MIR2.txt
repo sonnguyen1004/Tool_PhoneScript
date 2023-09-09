@@ -1,0 +1,18 @@
+﻿HƯỚNG DẪN CHẠY ĐỒNG BỘ GAME MIR2 / GAME PC
+
+1. Tắt hết game nếu đang mở
+2. Chạy Tool với quyền ADMIN. 
+	tài khoản trải nghiệm :  mir4_01 đến mir4_10    pass: 111
+
+3.Add Game MIR2
+	-> Hãy vào nút hình bánh răng (CONFIG)
+	    +Class Name điền vào  chử này nếu chưa có sẵn trong list->  UnityWndClass 
+		+ Nhan vào dấu + (ADD)
+	   + Điền vào ô Auto Load Laucher chữ này -> MIR2M
+	   + Điền vào ô Game Name chữ này  -> MIR2MTW.exe		
+	Đóng hợp thoại naỳ lại
+	
+
+4. Chạy laucher game MIR2 mở hết cửa sổ game lên.
+5. Nhấn vào MENU: VIew -> MoveCase ALl WithSize : chọn 600,400 rồi OK để thu nhỏ và xấp xếp các GAME cạnh nhau
+6  Nhìn vào nút hình 3 cái điện thoại (MULTICONTROL DEVICES)  nhấn vào nó. Mọi thao tác trên cửa sổ này thì các game Client PC sẽ chạy đồng bộ nhau.

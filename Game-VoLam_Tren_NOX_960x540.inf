@@ -1,0 +1,283 @@
+// Sử dụng các hàm được viết sắn trong file -> Config/function.inf
+include=Config/function.inf
+
+/////// TEST TAO CAC BIEN TOAN CUC ///////
+var ck=DSTART=12334534543;
+var ck2=Name1=12334534543;
+var TImer=0;
+var ClickNV=0;
+
+
+
+
+function Main ()
+{	
+
+	var s="Xin chao ban"; // Neu de bien o day la bien cuc trong ham ra khoi ham se thoat
+
+	//Web_SetCookie (ck);
+	//Web_AddCookie (ck);
+	//Web_SetHeader ("Cookie",ck);
+	//Web_GetData ("autonow.cf","/ip"); <<<<< Lay ip WAN Real mang hien tai
+	//SaveFile ("DataWeb.txt",fData,lenDataWeb); //<<< du lieu doc duoc luu xuong file
+	//AlertW ("Resuilt Text: "+fData); <<<<<<<< hien thong bao du lieu doc duoc
+	//Web_GetCookieName ("DSTART");
+	//AlertW ("Cookie la: "+Call);
+	//Web_GetCookieAll ();
+	//Web_GetHeaderRecv ();	
+	//AlertW ("CookieALL la: "+fData);
+	
+	
+	// TEST MIR4
+	
+	CheckImage ("Mir4_NvCheck1_491_68.bmp",491,68);
+	if (call>0)
+	{
+		alert (" tim thay mui ten");
+	}
+	
+
+	CheckImage ("Capture_150_64.bmp",150,64);
+	if (call>0)
+	{		
+		//Click (77,77);
+		alert ("Thong bao Xin chào bạn nè");
+		ClickMove (120,180,300,180);
+		//AppendFileLine ("aaa.txt","Tôi xin bó tay bạn đổ lỗi cho ai ...");
+		//ReadFile ("Test.inf");
+		//alert (fData);
+		
+	}
+	
+	
+	CheckImage ("Web_16_48.bmp",16,48);
+	if (call>0)
+	{	
+		//ReadFile ("aaa.txt");
+		//CopyW (fData);				
+		//CopyW ("Tôi xin bó tay bạn đổ lỗi cho ai");
+		//Paste ();				
+		SendTextCB ("A a B b cam on ban nhé tôi không muốn xoa đâu .");
+		//AdbPhone ("shell input keyevent KEYCODE_HOME");
+		alertw ("nhan ok paster text tay bạn đổ lỗi cho ai de homwe nè " );		
+		AdbPressHOME ();
+	}
+	
+	//////////// TÉST LDPLAYER 960 x540
+	
+	CheckImage ("Capture_224_93.bmp",224,93);
+	if (call>0)
+	{
+		//Alert ("can nhan home LDPLAYER");		
+		//Click (120,105);
+		ClickMove (120,260,700,260);
+	}	
+	
+	CheckImage ("WebLDPlayer_22_15.bmp",22,15);
+	if (call>0)
+	{
+		Alert ("nhan OK patste key HOME F1");				
+		//PressF1 ();
+		SendTextW ("thoi toi xin cam on ban nhé tôi không muốn xoa đâu .");
+	}
+	
+	
+	
+	///////////// NOX  960 x 540 //////////////
+	
+	
+	CheckImage ("Capture_126_164.bmp",126,164);
+	if (call>0)
+	{
+		alert ("Day la trang HOMWE NOX MOVE PAGE");		
+		
+		ClickMove (120,300,700,300);
+	}
+	
+	
+	CheckImage ("NoxMarket_2_327.bmp",2,327);
+	if (call>0)
+	{	
+		alert ("day la NÕ market nhan ok ve nhan hot key home");	
+		//Click (6,250);
+		//PressHOME ();
+		
+		//	KeyDown=17,1900545;
+			//KeyDown=86,3080193;
+			//KeyUp=86,3080193;
+			//KeyUp=17,1900545;
+			SendTextW ("thoi toi xin cam on ban nhé tôi không muốn xoa đâu .");
+			
+	}
+	
+	
+	
+	
+	
+	
+	
+	///////////// AUTO GAME VO LAM TRUYEN KY TREN NÕX ///////////////////
+	
+	
+	
+	
+	
+	CheckImage ("Kill_654_409.bmp",654,409);
+	if (call>0)
+	{	
+		Click (654,409);
+	}
+	
+	CheckImage ("Kill_724_351.bmp",724,351);
+	if (call>0)
+	{	
+		Click (724,351);
+	}
+	
+	CheckImage ("Kill_729_452.bmp",729,452);
+	if (call>0)
+	{	
+		Click (729,452);
+	}
+	
+	CheckImage ("Kill_801_297.bmp",801,297);
+	if (call>0)
+	{	
+		Click (801,297);
+	}
+	
+	CheckImage ("Kill_818_394.bmp",818,394);
+	if (call>0)
+	{	
+		Click (818,394);
+	}
+	
+	CheckImage ("kill_732_438.bmp",732,438);
+	if (call>0)
+	{	
+		Click (732,438);
+	}
+	
+	CheckImage ("kill_826_386.bmp",826,386);
+	if (call>0)
+	{	
+		Click (826,386);
+	}
+	
+	CheckImage ("Power1_720_347.bmp",720,347);
+	if (call>0)
+	{	
+		Click (720,347);
+	}
+	
+	CheckImage ("Power2_801_300.bmp",801,300);
+	if (call>0)
+	{	
+		Click (801,300);
+	}
+	
+	CheckImage ("ItemRoi_622_195.bmp",622,195);
+	if (call>0)
+	{	
+	//	alert ("roi item");
+		Click (622,195);
+	}
+	
+	CheckImage ("Item2_660_265.bmp",660,265);
+	if (call>0)
+	{	
+	//	alert ("Item2_660_265");
+		Click (660,265);
+	}
+	
+	CheckImage ("NhiemVu_838_391.bmp",838,391);
+	if (call>0)
+	{	
+		//alert ("NhiemVu_838_391");
+		Click (838,391);
+		//wait (3000);
+	}
+	
+	CheckImage ("DIE_510_374.bmp",510,374);
+	if (call>0)
+	{	
+		//alert ("DIE_510_374");
+		Click (510,374);
+	}
+	
+	CheckImage ("NhanVN_842_440.bmp",842,440);
+	if (call>0)
+	{	
+		//alert ("NhanVN_842_440");
+		
+		Click (842,440);
+		if (ClickNV==1)
+		{
+			wait (9000);
+		}
+		ClickNV=0;
+	}
+	
+	CheckImage ("NV3_766_436.bmp",766,436);
+	if (call>0)
+	{	
+		//alert ("NhanVN_842_440");
+		
+		Click (766,436);
+		if (ClickNV==1)
+		{
+			wait (3000);
+		}
+		ClickNV=0;
+	}
+	
+	
+	
+	CheckImage ("DlgBuyItem_763_74.bmp",763,74);
+	if (call>0)
+	{	
+		
+		FindImage ("IndexNeedBuy_636_100.bmp",170,98,480,140);
+		if (ImgX>0)
+		{
+			//alert ("tim thay aaa: "+ImgX+"  y: "+ImgY);
+			
+			ImgX+=50;
+			ImgY+=50;
+			
+			Click (ImgX,ImgY);
+		}
+	}
+	
+	CheckImage ("buy2_632_372.bmp",632,372);
+	if (call>0)
+	{	
+		Click (632,372);
+	}
+	
+	CheckImage ("Gui_750_337.bmp",750,337);
+	if (call>0)
+	{	
+		Click (750,337);
+	}
+	
+	
+	
+	TImer++;
+	
+	if (TImer>800)
+	{
+		TImer=0;
+		Click (70,112);
+		ClickNV=1;
+	}
+
+
+    return ;
+    }	
+
+
+label=Main
+   Main ();
+   Wait (5);
+goto=Main

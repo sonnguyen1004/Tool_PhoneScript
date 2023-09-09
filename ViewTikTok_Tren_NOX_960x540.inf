@@ -1,0 +1,106 @@
+// Sử dụng các hàm được viết sắn trong file -> Config/function.inf
+include=Config/function.inf
+
+
+
+var Link1 = www.tiktok.com/@duysoctrang1/video/7065994723869068570?is_copy_url=1&is_from_webapp=v1
+var Link2 = www.tiktok.com/@duysoctrang1/video/6805226691280112897?is_copy_url=1&is_from_webapp=v1
+var TimeWaitCLick=1000;	//thời gian chờ hiện menu lên
+var TimeView = 15000; 	// thời gian view 1 video 15 giây
+
+
+
+function XoaCacheCookieTrinhDuyet ()
+{
+	//script có thế khác tọa độ nếu sai đọ phân giải
+	
+	Click (930,50);			//Nhấn vào nút 3 chấm cài đặt
+	wait (TimeWaitCLick);	//cho 0.5 giay
+	Click (650,441);		//Nhấn vào nút cài đặt
+	wait (TimeWaitCLick);	//cho 0.5 giay
+	Click (70,140);			//Nhấn vào nút riêng tư
+	wait (TimeWaitCLick);	//cho 0.5 giay
+	Click (70,140);			//Nhấn vào Xóa cache
+	wait (TimeWaitCLick);	//cho 0.5 giay
+	Click (680,335);		//Nhấn vào nút OK
+	wait (TimeWaitCLick);	//cho 0.5 giay
+	Click (118,443);		//Nhấn vào nút xoa Cookie
+	wait (TimeWaitCLick);	//cho 0.5 giay
+	Click (680,330);		//Nhấn vào nút OK
+
+	
+	return 1;
+}
+
+function BatTatCheDoMayBay () // Off/On SafeDataMode
+{
+	// tự viết code thêm bật tắt chết độ máy bay
+	return 1;
+}
+
+
+function DangNhapTKMoi () //LogIn new acc youtube
+{
+
+
+	// Tự viết code đăng nhập tài khoản mới
+	return 1;
+}
+
+function NhanViewVideo ()
+{
+	wait (2000);
+	Click (480,500);		// Nhấn vào nút ĐỂ SAU
+	wait (1000);
+	Click (500,350);		// Nhấn vào nút play video tiktok
+	return 1;
+}
+
+
+function Main ()
+{
+// Bat Dau Viet Code Script tu day xuong duoi
+	
+
+	Click (1,0);		// Nhấn goc tren man 1 cai 
+	PressKey (36); 		// Nhấn nut HOME
+	wait (1000); 		// Chờ 1 giay
+
+	Click (120,170);	// Nhấn vao toa do cua trinh duyet ưeb
+	wait (1000); 		// Chờ 1 giay		
+	Click (100,50);		// Nhấn vao toa do thanh dia chi		
+	SendTextW (Link1);  // Điền địa chỉ link 1 vào trình duyệt
+	wait (1000);   		// Chờ 1 giây
+	PressKey (13);  	// Nhấn nut Enter	
+	
+	NhanViewVideo ();
+	
+	wait (TimeView); 		//dung lai nghe trong 1 lát
+	
+	//alert ("Nhấn OK để qua Link so 2");// ham nay ko hien duoc tieng viet	
+	Click (100,50);		// Nhấn vao toa do thanh dia chi		
+	SendTextW (Link2);	// điền địa chỉ link 2 vào trình duyệt
+	
+	wait (1000);
+	PressKey (13);  	// Nhấn nut Enter
+	NhanViewVideo  ();
+	wait (TimeView); 		//dung lai nghe trong 1 lát
+	//alertw ("Nhấn OK để quay lại link 1"); // ham w hien dc tieng viet
+	
+	
+	//Khúc này có thể tự viết thêm code nhấn cài đặt, quyền riêng tư,xóa bộ nhớ cache,cookie
+	XoaCacheCookieTrinhDuyet ();
+	
+	//Nếu là trên điện thoại kết hợp bắt tắt chế độ máy bay đế sim4g lấy IP mới.
+	BatTatCheDoMayBay ();
+	//Đăng nhập tài khoản youtube khác.
+	DangNhapTKMoi ();
+	
+	return 1;
+}
+
+
+label=Main
+  Main ();
+  Wait (10);
+goto=Main

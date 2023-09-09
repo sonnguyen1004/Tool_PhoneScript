@@ -1,0 +1,47 @@
+// Sử dụng các hàm được viết sắn trong file  Config/function.inf
+// Mở file nay` để biết các hàm có thể sử dụng làm auto, cách gọi hàm, đặt tên biến, biến trả về sau khi gọi hàm,...
+
+include=Config/function.inf
+
+
+function Main ()
+{
+// Người dùng viết code bắt đầu từ chổ này xuống
+
+
+	CheckImage ("ttt1_336_374.bmp",336,374)
+	if (call>0)
+	{
+		Click (335,375);
+		WAIT (2000);
+	}
+
+	CheckImage ("ttt2_363_433.bmp",363,433)
+	if (call>0)
+	{
+		//ClickMouse (363,433); Click
+		Click (363,433);
+		WAIT (2000);
+	}
+
+	CheckImage ("ttt3_512_500.bmp",512,500)
+	if (call>0)
+	{
+		Click (512,500);
+		WAIT (2000);
+	}
+	
+
+
+
+
+
+/// Kết thúc hàm main
+return 1;
+}
+
+
+label=Main
+Main ();
+Wait (10);
+goto=Main

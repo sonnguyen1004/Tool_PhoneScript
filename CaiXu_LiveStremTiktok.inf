@@ -1,0 +1,46 @@
+﻿// Sử dụng các hàm được viết sắn trong file  Config/function.inf
+// Mở file nay` để biết các hàm có thể sử dụng làm auto, cách gọi hàm, đặt tên biến, biến trả về sau khi gọi hàm,...
+
+include=Config/function.inf
+
+function ChoMoHopQua ()
+{
+  WaitImageIn (300000,"Mo_109_578.bmp",104,574,10,10) ;
+  if (call>0) // tim thay nut open 
+  {
+    // MsgBox="nhan ok open nao";
+	//Sleep (500);
+    Click (ImgX,ImgY);
+    Sleep (5000);
+    Click (ImgX,ImgY);
+    return 1;
+
+    // ko tim thay nut open sau 300 giay
+    return 0;
+  }
+}
+
+function Main ()
+{
+
+adb='shell input touchscreen swipe 250 500 250 -500'
+
+//   FindImage ("Hopqua_19_87.bmp",15,82,10,10);
+   WaitImageIn (10000,"Hopqua_19_87.bmp",15,82,10,10) ;
+   if (call>0)
+   {
+    //MsgBox="nhan ok mo hop qua";
+  	 Click (15,82);
+   	ChoMoHopQua ();
+   }
+
+
+
+return 1;
+}
+
+
+label=Main
+Main ();
+Wait (10);
+goto=Main
